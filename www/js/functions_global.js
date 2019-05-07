@@ -63,7 +63,7 @@ var global_audio_setInterval = new Array();
 			}
 			//global_platform = "iOS";
 			
-			
+			/*
 			//notification
 			cordova.plugins.notification.local.on('schedule', function (notification) {
 				alert('scheduled: ' + JSON.stringify (notification));
@@ -93,7 +93,8 @@ var global_audio_setInterval = new Array();
 			setTimeout(function () {
 				StartPush ();
 			}, 10000);
-				
+			*/
+			
 			/*	
 			cordova.plugins.backgroundMode.enable();
 		
@@ -114,14 +115,20 @@ var global_audio_setInterval = new Array();
 
 function StartPush () {
 	
-	custom_alert('StartPush');
-	
+	cordova.plugins.notification.local.schedule({
+		title: 'My first notification',
+		text: 'Thats pretty easy...',
+		foreground: true
+	});
+	/*
 	cordova.plugins.notification.local.schedule({
 		id: 1,
 		title: 'Scheduled with delay',
 		text: 'Test Message',
 		data: { test: 'custom id' }
 	});	
+	*/
+	custom_alert('StartPush');
 	
 }
 
