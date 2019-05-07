@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AudioLoop</title>
+<!--
+    This template can be used for simple app with left side menu that can be opened to switch views, for applications like Youtube App or Gmail app.
+-->  
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+
+    <link rel="stylesheet" type="text/css" href="css/icons.fa.css" /> <!-- http://fortawesome.github.io/Font-Awesome/cheatsheet/ -->
+    <link rel="stylesheet" type="text/css" href="./js/jquery-ui-1.11.4.custom/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="./js/jquery-ui-1.11.4.custom/jquery-ui.structure.min.css" />
+    <link rel="stylesheet" type="text/css" href="./js/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="appframework/2.1/css/icons.min.css" />
+    <link rel="stylesheet" type="text/css" href="appframework/2.1/css/af.ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css?4"  />
+    
+    <script type="application/javascript" src="appframework/2.1/appframework.js"></script>
+    <script type="application/javascript" src="appframework/2.1/appframework.ui.js?7" data-ver="1"></script>
+
+    <!--AppFramework plugin for sliding side menu-->
+    <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.slidemenu.js"></script>
+    <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.touchEvents.js"></script>
+    
+
+    <!-- phantom library, needed for XDK "legacy" container api calls -->
+    <script src="intelxdk.js"></script>
+    <!-- phantom library, needed for Cordova api calls -->
+    <script src="cordova.js"></script>
+    <!-- phantom library, needed for XDK "legacy" container CORS -->
+    <script src="xhr.js"></script>
+	
+    <script type="text/javascript" src="./js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" charset="utf-8" src="./js/jquery.validate.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="./js/functions_global.js?1"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/functions_general.js?1"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/functions_audioloop.js?1"></script>
+    
+</head>
+<body style="overflow:hidden;"> 
+
+<div id="afui" class="android">
+
+    <!--Left Side Menu Navigation bar -->
+    <nav>
+        <ul class="list">
+            <li class="login_remove"><a href="javascript: void(0);" onClick="homePage();" class="icon fa-home big">Home</a></li>
+            <!--<li><a href="javascript: void(0);" onClick="aboutPage();" class="icon fa-user big">About Us</a></li>-->
+        </ul>
+    </nav>
+    
+    <div id="content" style="">        
+        
+        <!-- WelcomePage -->
+        <div id="WelcomePage" class="panel" title="Welcome" data-footer="none">
+            <header>
+                <a id="menubadge" onclick='OpenSideMenu();' class='menuButton' style="float:right !important"></a>
+                <h1></h1>
+                <span class="left_text">Welcome!</span>
+            </header>
+            
+           	<div class="logo_hold"></div>
+            
+            <div class="buttons_hold">
+            	<a href="javascript: void(0);" onClick="PlayAudio(0);" class="button_regular">play audio loop</a>
+                <a href="javascript: void(0);" onClick="PlayAudio(1);" class="button_regular">play audio single 1</a>
+                <a href="javascript: void(0);" onClick="PlayAudio(2);" class="button_regular">play audio single 2</a>
+                <a href="javascript: void(0);" onClick="StopAudio(0)" class="button_regular">stop audio loop</a>
+            </div>
+            
+        </div>
+        <!-- WelcomePage end -->
+        
+                
+        
+        <!--
+        <div class="panel" title="About Us" id="aboutPage" >
+            <header>
+                <a id="menubadge" onclick='OpenSideMenu();' class='menuButton' style="float:right !important"></a>
+                <h1>About Us header</h1>
+                <a id="backButton" onClick="GoBack();" class='button'>Back</a>
+            </header>
+            
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <a onClick="cordova.InAppBrowser.open('http://google.com', '_blank', 'location=yes');" class='button'>Maecenas feugiat consequat diam</a>. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla. Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla. Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla. Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla. Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris. 
+            <footer>
+              <a class="icon home" href="#home">Home</a>
+              <a class="icon settings" href="#settings">Settings</a>
+              <a class="icon bug" href="#bugs">Bugs</a>
+              <a class="icon info" href="#bugs">About</a>
+            </footer>
+        </div>
+       	-->
+        
+         
+    </div>
+    
+    <div id="top_menu_page"></div>
+    
+</div>
+</body>
+</html>    
