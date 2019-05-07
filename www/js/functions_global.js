@@ -1,4 +1,4 @@
-var local_chk = 0;
+var local_chk = 1;
 /*
 0 - local app full
 1 - mob app full
@@ -26,6 +26,8 @@ var global_geolocationWatchTimer;
 var global_geolocationWatchTimer_chk = 0;
 var global_audio_data = new Array();
 var global_audio_loop = new Array();
+var global_audio_repeat_chk = 0;
+var global_audio_setInterval = new Array();
 
 
 /* INIT */

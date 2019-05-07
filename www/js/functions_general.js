@@ -357,7 +357,7 @@ function LoadAudio (id) {
 	//https://www.w3schools.com/jsref/dom_obj_audio.asp
 	
 	$('#audio_player_holder_'+id).remove();
-	$('body').append('<audio id="audio_player_holder_'+id+'"><source src="'+global_audio_data[id]+'" type="audio/mpeg" /></audio>');
+	$('body').append('<audio id="audio_player_holder_'+id+'"><source src="'+global_audio_data[id]['path']+'" type="audio/mpeg" /></audio>');
 	
 	global_audio_loop[id] = document.getElementById('audio_player_holder_'+id);
 	
@@ -367,122 +367,24 @@ function LoadAudio (id) {
 }
 
 function PlayAudio (id) {
-	
+
     global_audio_loop[id].play();
+	
+	if (global_audio_data[id]['repeat'] > 0 && typeof(global_audio_setInterval[id]) == 'undefined') {
+		var sec = global_audio_data[id]['repeat'] * 1000;
+		global_audio_setInterval[id] = setInterval(function(){ PlayAudio (id); }, sec);
+	}
 	
 }
 
-function StopAudio (id) {
+function StopAudio () {
 	
 	for (var key in global_audio_data) {
 		global_audio_loop[key].pause();	
+		clearInterval(global_audio_setInterval[key]);
 	}
 	
 }
-
-
-
-
-/*
-function LoadAudio (id, filePath) {
-
-	if( window.plugins && window.plugins.NativeAudio ) {
-
-		if (id == 0) {
-			window.plugins.NativeAudio.preloadComplex( 'audio_'+id, filePath, 1, 1, 0, function(msg){
-			}, function(msg){
-				custom_alert('error: ' + msg);
-				//console.log( 'error: ' + msg );
-			});
-		} else {
-			window.plugins.NativeAudio.preloadSimple( 'audio_'+id, filePath, function(msg){
-			}, function(msg){
-				custom_alert('error: ' + msg);
-				//console.log( 'error: ' + msg );
-			});
-		}
-		
-	} else {
-	
-		console.log (filePath);	
-		
-	}
-	
-}
-
-
-function PlayAudio (id) {
-
-	if( window.plugins && window.plugins.NativeAudio ) {
-
-		if (id == 0) {
-			window.plugins.NativeAudio.loop( 'audio_'+id );
-		} else {
-			window.plugins.NativeAudio.play( 'audio_'+id );
-		}
-		
-	} else {
-	
-		console.log (global_audio_data[id]);	
-		
-	}
-	
-}
-
-
-function StopAudio (id) {
-	
-	if( window.plugins && window.plugins.NativeAudio ) {
-		
-		window.plugins.NativeAudio.stop( 'audio_'+id );
-		
-		for (var key in global_audio_data) {
-			window.plugins.NativeAudio.unload( 'audio_'+key );
-		}
-		
-	} else {
-	
-		for (var key in global_audio_data) {
-			
-			console.log (key);
-				
-		}
-		
-	}
-	
-}
-*/
-
-
-/*
-function AudioDownload (AudioURI, AudioTitle) {
-	
-	$.ui.showMask();
-	
-	audiodownload.StartAudioDownload(AudioDownload_ok, AudioDownload_error, {AudioURI:AudioURI, AudioTitle:AudioTitle});
-	
-}
-
-function AudioDownload_ok (data) {
-	
-	var filePath = JSON.stringify(data);
-	if (filePath != "null" && filePath != "") {
-		$.ui.hideMask();
-		custom_alert(filePath);
-		LoadAudio (0, filePath);
-	} else {
-		custom_alert('ok-' + filePath);
-	}
-	
-}
-
-function AudioDownload_error (data) {
-	
-	$.ui.hideMask();
-	custom_alert('error-' + JSON.stringify(data));
-	
-}
-*/
 // ### audio - end ### //
 
 
