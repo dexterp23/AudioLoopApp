@@ -422,9 +422,9 @@ function StopAudio (id) {
 }
 
 
-function AudioDownload (AudioURI) {
+function AudioDownload (AudioURI, AudioTitle) {
 
-	audiodownload.StartAudioDownload(AudioDownload_ok, AudioDownload_error, {AudioURI:AudioURI});	
+	audiodownload.StartAudioDownload(AudioDownload_ok, AudioDownload_error, {AudioURI:AudioURI, AudioTitle:AudioTitle});	
 	
 }
 
