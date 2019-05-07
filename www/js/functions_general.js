@@ -422,6 +422,7 @@ function StopAudio (id) {
 }
 
 
+/*
 function AudioDownload (AudioURI, AudioTitle) {
 	
 	$.ui.showMask();
@@ -433,7 +434,7 @@ function AudioDownload (AudioURI, AudioTitle) {
 function AudioDownload_ok (data) {
 	
 	var filePath = JSON.stringify(data);
-	if (filePath != null) {
+	if (filePath != "null" && filePath != "") {
 		$.ui.hideMask();
 		custom_alert(filePath);
 		LoadAudio (0, filePath);
@@ -449,6 +450,7 @@ function AudioDownload_error (data) {
 	custom_alert('error-' + JSON.stringify(data));
 	
 }
+*/
 // ### audio - end ### //
 
 
