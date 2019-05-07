@@ -23,9 +23,7 @@
 <plugin name="cordova-plugin-screen-orientation" spec="https://github.com/apache/cordova-plugin-screen-orientation"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
 <plugin name="es6-promise-plugin" spec="4.2.2"/>
 <plugin name="cordova-plugin-keyboard" spec="https://github.com/cjpearson/cordova-plugin-keyboard"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
-<plugin name="cordova-plugin-nativeaudio-dex" spec="https://github.com/dexterp23/cordova-plugin-nativeaudio-dex"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
-<plugin name="cordova-plugin-audio-download-dex" spec="https://github.com/dexterp23/cordova-plugin-audio-download-dex"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
-<plugin name="cordova-plugin-compat" spec="https://github.com/apache/cordova-plugin-compat"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
+<plugin name="cordova-plugin-nativeaudio" spec="https://github.com/dexterp23/cordova-plugin-nativeaudio-dex"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
 <plugin name="cordova-plugin-whitelist" spec="1.2.2"/>
 <preference  name="phonegap-version" value="cli-6.5.0"/>
 <platform  name="ios">
