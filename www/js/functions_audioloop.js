@@ -13,7 +13,11 @@ function WelcomePage () {
 	global_audio_data[1] = global_host+"/audio_1.mp3";
 	global_audio_data[2] = global_host+"/audio_2.mp3";
 	*/
-
+	
+	
+	for (var key in global_audio_data) {
+		LoadAudio (key);
+	}
 	
 }
 

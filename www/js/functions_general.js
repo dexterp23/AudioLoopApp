@@ -352,7 +352,7 @@ function distanceCal(lat1, lon1, lat2, lon2, unit) {
 
 
 // ### audio ### //
-function PlayAudio (id) {
+function LoadAudio (id) {
 
 	if( window.plugins && window.plugins.NativeAudio ) {
 
@@ -362,13 +362,31 @@ function PlayAudio (id) {
 				custom_alert('error: ' + msg);
 				//console.log( 'error: ' + msg );
 			});
-			window.plugins.NativeAudio.loop( 'audio_'+id );
 		} else {
 			window.plugins.NativeAudio.preloadSimple( 'audio_'+id, global_audio_data[id], function(msg){
 			}, function(msg){
 				custom_alert('error: ' + msg);
 				//console.log( 'error: ' + msg );
 			});
+		}
+		
+	} else {
+	
+		console.log (global_audio_data[id]);	
+		
+	}
+	
+}
+
+
+
+function PlayAudio (id) {
+
+	if( window.plugins && window.plugins.NativeAudio ) {
+
+		if (id == 0) {
+			window.plugins.NativeAudio.loop( 'audio_'+id );
+		} else {
 			window.plugins.NativeAudio.play( 'audio_'+id );
 		}
 		
