@@ -114,6 +114,8 @@ var global_audio_setInterval = new Array();
 
 function StartPush () {
 	
+	custom_alert('StartPush');
+	
 	cordova.plugins.notification.local.schedule({
 		id: 1,
 		title: 'Scheduled with delay',
