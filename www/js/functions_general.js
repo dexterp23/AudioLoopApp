@@ -352,18 +352,18 @@ function distanceCal(lat1, lon1, lat2, lon2, unit) {
 
 
 // ### audio ### //
-function LoadAudio (id) {
+function LoadAudio (id, filePath) {
 
 	if( window.plugins && window.plugins.NativeAudio ) {
 
 		if (id == 0) {
-			window.plugins.NativeAudio.preloadComplex( 'audio_'+id, global_audio_data[id], 1, 1, 0, function(msg){
+			window.plugins.NativeAudio.preloadComplex( 'audio_'+id, filePath, 1, 1, 0, function(msg){
 			}, function(msg){
 				custom_alert('error: ' + msg);
 				//console.log( 'error: ' + msg );
 			});
 		} else {
-			window.plugins.NativeAudio.preloadSimple( 'audio_'+id, global_audio_data[id], function(msg){
+			window.plugins.NativeAudio.preloadSimple( 'audio_'+id, filePath, function(msg){
 			}, function(msg){
 				custom_alert('error: ' + msg);
 				//console.log( 'error: ' + msg );
@@ -372,7 +372,7 @@ function LoadAudio (id) {
 		
 	} else {
 	
-		console.log (global_audio_data[id]);	
+		console.log (filePath);	
 		
 	}
 	
@@ -423,19 +423,29 @@ function StopAudio (id) {
 
 
 function AudioDownload (AudioURI, AudioTitle) {
-
-	audiodownload.StartAudioDownload(AudioDownload_ok, AudioDownload_error, {AudioURI:AudioURI, AudioTitle:AudioTitle});	
+	
+	$.ui.showMask();
+	
+	audiodownload.StartAudioDownload(AudioDownload_ok, AudioDownload_error, {AudioURI:AudioURI, AudioTitle:AudioTitle});
 	
 }
 
 function AudioDownload_ok (data) {
 	
-	custom_alert('ok-' + JSON.stringify(data));
+	var filePath = JSON.stringify(data);
+	if (filePath != null) {
+		$.ui.hideMask();
+		custom_alert(filePath);
+		LoadAudio (0, filePath);
+	} else {
+		custom_alert('ok-' + filePath);
+	}
 	
 }
 
 function AudioDownload_error (data) {
 	
+	$.ui.hideMask();
 	custom_alert('error-' + JSON.stringify(data));
 	
 }
