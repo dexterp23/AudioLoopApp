@@ -354,10 +354,13 @@ function distanceCal(lat1, lon1, lat2, lon2, unit) {
 // ### audio ### //
 function LoadAudio (id) {
 	
-	custom_alert(global_audio_data[id]);
-	
-	global_audio_loop = new Media(global_audio_data[id], onSuccess, onError, onStatus);
-    global_audio_loop.play();	
+	if (typeof(Media) == 'undefined') {
+		custom_alert('no media');
+	} else {
+		custom_alert(global_audio_data[id]);
+		global_audio_loop = new Media(global_audio_data[id], onSuccess, onError, onStatus);
+    	global_audio_loop.play();	
+	}
 	
 }
 
