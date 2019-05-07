@@ -62,6 +62,40 @@ var global_audio_setInterval = new Array();
 				homePage();
 			}
 			//global_platform = "iOS";
+			
+			cordova.plugins.notification.local.on('schedule', function (notification) {
+				alert('scheduled: ' + JSON.stringify (notification));
+			});
+
+			cordova.plugins.notification.local.on('update', function (notification) {
+				alert('update: ' + JSON.stringify (notification));
+			});
+
+			cordova.plugins.notification.local.on('trigger', function (notification) {
+				alert('trigger: ' + JSON.stringify (notification));
+			});
+
+			cordova.plugins.notification.local.on('click', function (notification) {
+				alert('click: ' + JSON.stringify (notification));
+			});
+
+			cordova.plugins.notification.local.on('cancel', function (notification) {
+				alert('cancel: ' + JSON.stringify (notification));
+			});
+
+			cordova.plugins.notification.local.on('clear', function (notification) {
+				alert('clear: ' + JSON.stringify (notification));
+			});
+			
+			cordova.plugins.backgroundMode.enable();
+		
+			//kada se aplikacija spusti onda se pokrene ovaj deo. on ce nakon 5s da pokrene funkciju koju mu kazemo ali samo jednom. ukoliko korisnik ne odreaguje vise necemo moci da mu saljemo notifikaciju sve dok ponovo ne udje u app i spusti je dole.
+			cordova.plugins.backgroundMode.onactivate = function () {
+				setTimeout(function () {
+					StartPush ();
+				}, 1000);
+			}
+			
 		}
 	} ;
 	document.addEventListener("deviceready", onDeviceReady, false) ;
@@ -70,7 +104,16 @@ var global_audio_setInterval = new Array();
 /* INIT END */
 
 
-
+function StartPush () {
+	
+	cordova.plugins.notification.local.schedule({
+		id: 1,
+		title: 'Scheduled with delay',
+		text: 'Test Message',
+		data: { test: 'custom id' }
+	});	
+	
+}
 
 function homePage () {
 	
