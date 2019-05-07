@@ -25,6 +25,7 @@ var global_current_page;
 var global_geolocationWatchTimer;
 var global_geolocationWatchTimer_chk = 0;
 var global_audio_data = new Array();
+var global_audio_loop;
 
 
 /* INIT */

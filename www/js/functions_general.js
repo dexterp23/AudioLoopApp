@@ -352,12 +352,11 @@ function distanceCal(lat1, lon1, lat2, lon2, unit) {
 
 
 // ### audio ### //
-var global_audio_loop = null;
 function LoadAudio (id) {
 	
-	custom_alert(global_audio_data[key]);
+	custom_alert(global_audio_data[id]);
 	
-	global_audio_loop = new Media(global_audio_data[key], onSuccess, onError, onStatus);
+	global_audio_loop = new Media(global_audio_data[id], onSuccess, onError, onStatus);
     global_audio_loop.play();	
 	
 }
