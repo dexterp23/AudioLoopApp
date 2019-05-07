@@ -22,9 +22,9 @@ function WelcomePage () {
 			AudioDownload (global_audio_data[key], "audio_"+key);
 		}
 		*/
-		if (key == 0) {
+		//if (key == 0) {
 			LoadAudio (key);
-		}
+		//}
 	}
 	
 }

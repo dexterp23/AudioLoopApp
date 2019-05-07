@@ -354,37 +354,34 @@ function distanceCal(lat1, lon1, lat2, lon2, unit) {
 // ### audio ### //
 function LoadAudio (id) {
 	
-	if (typeof(Media) == 'undefined') {
-		custom_alert('no media');
-	} else {
-		custom_alert(global_audio_data[id]);
-		global_audio_loop = new Media(global_audio_data[id], onSuccess, onError, onStatus);
-    	global_audio_loop.play();	
-	}
+	//https://www.w3schools.com/jsref/dom_obj_audio.asp
 	
-}
-
-// onSuccess Callback
-function onSuccess() {
-	custom_alert('Success');
-}
-// onError Callback 
-function onError(error) {
-	alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
-}
-// onStatus Callback 
-function onStatus(status) {
-	if( status==Media.MEDIA_STOPPED ) {
-		global_audio_loop.play();
-	}
+	$('#audio_player_holder_'+id).remove();
+	$('body').append('<audio id="audio_player_holder_'+id+'"><source src="'+global_audio_data[id]+'" type="audio/mpeg" /></audio>');
+	
+	global_audio_loop[id] = document.getElementById('audio_player_holder_'+id);
+	
+	if (id == 0) global_audio_loop[id].loop = true;
+	global_audio_loop[id].load();
+	
 }
 
 function PlayAudio (id) {
 	
-	global_audio_loop.setVolume('1.0');
-    global_audio_loop.play();
+    global_audio_loop[id].play();
 	
 }
+
+function StopAudio (id) {
+	
+	for (var key in global_audio_data) {
+		global_audio_loop[key].pause();	
+	}
+	
+}
+
+
+
 
 /*
 function LoadAudio (id, filePath) {
@@ -412,7 +409,6 @@ function LoadAudio (id, filePath) {
 	}
 	
 }
-
 
 
 function PlayAudio (id) {
