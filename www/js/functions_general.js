@@ -354,7 +354,9 @@ function distanceCal(lat1, lon1, lat2, lon2, unit) {
 // ### audio ### //
 var global_audio_loop = null;
 function LoadAudio (id) {
-
+	
+	custom_alert(global_audio_data[key]);
+	
 	global_audio_loop = new Media(global_audio_data[key], onSuccess, onError, onStatus);
     global_audio_loop.play();	
 	
@@ -373,6 +375,13 @@ function onStatus(status) {
 	if( status==Media.MEDIA_STOPPED ) {
 		global_audio_loop.play();
 	}
+}
+
+function PlayAudio (id) {
+	
+	global_audio_loop.setVolume('1.0');
+    global_audio_loop.play();
+	
 }
 
 /*
