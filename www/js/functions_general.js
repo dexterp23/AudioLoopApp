@@ -420,6 +420,25 @@ function StopAudio (id) {
 	}
 	
 }
+
+
+function AudioDownload (AudioURI) {
+
+	audiodownload.StartAudioDownload(AudioDownload_ok, AudioDownload_error, {AudioURI:AudioURI});	
+	
+}
+
+function AudioDownload_ok (data) {
+	
+	custom_alert('ok-' + JSON.stringify(data));
+	
+}
+
+function AudioDownload_error (data) {
+	
+	custom_alert('error-' + JSON.stringify(data));
+	
+}
 // ### audio - end ### //
 
 

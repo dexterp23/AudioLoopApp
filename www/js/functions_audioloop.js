@@ -16,7 +16,10 @@ function WelcomePage () {
 	
 	
 	for (var key in global_audio_data) {
-		LoadAudio (key);
+		//LoadAudio (key);
+		if (key == 0) {
+			AudioDownload (global_audio_data[key]);	
+		}
 	}
 	
 }
