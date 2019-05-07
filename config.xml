@@ -25,7 +25,6 @@
 <plugin name="cordova-plugin-keyboard" spec="https://github.com/cjpearson/cordova-plugin-keyboard"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
 <plugin name="cordova-plugin-compat" spec="https://github.com/apache/cordova-plugin-compat"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
 <plugin name="cordova-plugin-local-notification" spec="https://github.com/katzer/cordova-plugin-local-notifications"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
-<plugin name="cordova-plugin-background-mode" spec="https://github.com/katzer/cordova-plugin-background-mode"/> <!-- If available via Cordova registry; consider changing to an NPM reference. -->
 <plugin name="cordova-plugin-whitelist" spec="1.2.2"/>
 <preference  name="phonegap-version" value="cli-6.5.0"/>
 <platform  name="ios">

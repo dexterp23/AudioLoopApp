@@ -63,6 +63,8 @@ var global_audio_setInterval = new Array();
 			}
 			//global_platform = "iOS";
 			
+			
+			//notification
 			cordova.plugins.notification.local.on('schedule', function (notification) {
 				alert('scheduled: ' + JSON.stringify (notification));
 			});
@@ -86,16 +88,22 @@ var global_audio_setInterval = new Array();
 			cordova.plugins.notification.local.on('clear', function (notification) {
 				alert('clear: ' + JSON.stringify (notification));
 			});
+			//notification - end
 			
+			setTimeout(function () {
+				StartPush ();
+			}, 10000);
+				
+			/*	
 			cordova.plugins.backgroundMode.enable();
 		
-			//kada se aplikacija spusti onda se pokrene ovaj deo. on ce nakon 5s da pokrene funkciju koju mu kazemo ali samo jednom. ukoliko korisnik ne odreaguje vise necemo moci da mu saljemo notifikaciju sve dok ponovo ne udje u app i spusti je dole.
+			//kada se aplikacija spusti onda se pokrene ovaj deo. on ce nakon 1s da pokrene funkciju koju mu kazemo ali samo jednom. ukoliko korisnik ne odreaguje vise necemo moci da mu saljemo notifikaciju sve dok ponovo ne udje u app i spusti je dole.
 			cordova.plugins.backgroundMode.onactivate = function () {
 				setTimeout(function () {
 					StartPush ();
 				}, 1000);
 			}
-			
+			*/
 		}
 	} ;
 	document.addEventListener("deviceready", onDeviceReady, false) ;
