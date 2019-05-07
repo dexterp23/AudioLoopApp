@@ -363,7 +363,7 @@ function LoadAudio (id) {
 
 // onSuccess Callback
 function onSuccess() {
-	
+	custom_alert('Success');
 }
 // onError Callback 
 function onError(error) {
