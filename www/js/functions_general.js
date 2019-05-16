@@ -357,7 +357,7 @@ function LoadAudio (id) {
 	//https://www.w3schools.com/jsref/dom_obj_audio.asp
 	
 	$('#audio_player_holder_'+id).remove();
-	$('body').append('<audio id="audio_player_holder_'+id+'"><source src="'+global_audio_data[id]['path']+'" type="audio/mpeg" /></audio>');
+	$('body').append('<audio id="audio_player_holder_'+id+'"><source src="'+global_audio_data[id]['audio']+'" type="audio/mpeg" /></audio>');
 	
 	global_audio_loop[id] = document.getElementById('audio_player_holder_'+id);
 	
@@ -370,8 +370,8 @@ function PlayAudio (id) {
 
     global_audio_loop[id].play();
 	
-	if (global_audio_data[id]['repeat'] > 0 && typeof(global_audio_setInterval[id]) == 'undefined') {
-		var sec = global_audio_data[id]['repeat'] * 1000;
+	if (parseInt (global_audio_data[id]['repeat']) > 0 && typeof(global_audio_setInterval[id]) == 'undefined') {
+		var sec = parseInt (global_audio_data[id]['repeat']) * 1000;
 		global_audio_setInterval[id] = setInterval(function(){ PlayAudio (id); }, sec);
 	}
 	
