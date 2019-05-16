@@ -1,12 +1,12 @@
-var local_chk = 1;
+var local_chk = 0;
 /*
 0 - local app full
 1 - mob app full
 */
 
 if (local_chk == 1) {
-	//var global_host = "http://audioloopapp.teamsnapp.com"; //hosting
-	var global_host = "http://192.168.0.13/audio_loop_app"; //local
+	var global_host = "http://audioloopapp.teamsnapp.com"; //hosting
+	//var global_host = "http://192.168.0.13/audio_loop_app"; //local
 } else if (local_chk == 0) {
 	//var global_host = "http://127.0.0.2/audio_loop_app"; //local
 	var global_host = "http://192.168.0.13/audio_loop_app"; //local
@@ -26,7 +26,6 @@ var global_geolocationWatchTimer;
 var global_geolocationWatchTimer_chk = 0;
 var global_audio_data = new Array();
 var global_audio_loop = new Array();
-var global_audio_repeat_chk = 0;
 var global_audio_setInterval = new Array();
 
 
@@ -136,7 +135,7 @@ function homePage () {
 	
 	homePage_init ();
 
-	//nextPage('test');
+	TemplatesPage(1);
 
 }
 
