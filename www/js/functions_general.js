@@ -384,6 +384,8 @@ function StopAudio () {
 		clearInterval(global_audio_setInterval[key]);
 	}
 	
+	global_audio_setInterval = new Array();
+	
 }
 // ### audio - end ### //
 
